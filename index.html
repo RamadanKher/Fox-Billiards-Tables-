@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>فوكس | مصنع تصنيع طاولات البلياردو</title>
+<meta name="description" content="مصنع فوكس لتصنيع طاولات البلياردو — تصنيع محلي بالكامل، خامات أصلية، وضمان حقيقي. من المصنع إلى صالتك مباشرة.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Almarai:wght@400;700;800&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0b0b0d;
+    --bg-soft:#141416;
+    --card:#19191c;
+    --card-line:rgba(201,162,75,.16);
+    --gold:#c9a24b;
+    --gold-light:#e9cd85;
+    --cream:#f3efe4;
+    --muted:#a39d90;
+    --wine:#7c2430;
+    --shadow: 0 20px 50px rgba(0,0,0,.45);
+    --ease: cubic-bezier(.2,.7,.2,1);
+  }
+
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--cream);
+    font-family:'Tajawal', sans-serif;
+    font-weight:400;
+    line-height:1.7;
+    overflow-x:hidden;
+  }
+  img{max-width:100%; display:block;}
+  a{color:inherit; text-decoration:none;}
+  ul{list-style:none;}
+  h1,h2,h3,h4{font-family:'Almarai', sans-serif; font-weight:800; line-height:1.25;}
+  .container{width:100%; max-width:1200px; margin:0 auto; padding:0 24px;}
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:10px;
+    font-family:'Tajawal', sans-serif; font-weight:700; font-size:13px;
+    color:var(--gold-light); letter-spacing:.5px;
+    margin-bottom:18px;
+  }
+  .eyebrow::before{
+    content:""; width:26px; height:1px; background:var(--gold);
+  }
+  .btn{
+    display:inline-flex; align-items:center; justify-content:center; gap:10px;
+    padding:15px 30px; border-radius:2px; font-family:'Tajawal'; font-weight:700; font-size:15px;
+    cursor:pointer; border:1px solid transparent; transition: all .35s var(--ease);
+  }
+  .btn-gold{ background:var(--gold); color:#1a1305; }
+  .btn-gold:hover{ background:var(--gold-light); transform:translateY(-2px); }
+  .btn-ghost{ border-color:rgba(243,239,228,.3); color:var(--cream); }
+  .btn-ghost:hover{ border-color:var(--gold); color:var(--gold-light); }
+
+  /* ---------- reveal ---------- */
+  .reveal{ opacity:0; transform:translateY(24px); transition:opacity .9s var(--ease), transform .9s var(--ease); }
+  .reveal.in{ opacity:1; transform:translateY(0); }
+  @media (prefers-reduced-motion: reduce){
+    .reveal{opacity:1; transform:none; transition:none;}
+    html{scroll-behavior:auto;}
+  }
+
+  /* ---------- nav ---------- */
+  header{
+    position:fixed; top:0; inset-inline:0; z-index:100;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:20px 0; background:linear-gradient(to bottom, rgba(11,11,13,.9), transparent);
+    transition:background .3s, padding .3s, border-color .3s;
+    border-bottom:1px solid transparent;
+  }
+  header.scrolled{ background:rgba(11,11,13,.92); backdrop-filter:blur(10px); padding:12px 0; border-color:var(--card-line);}
+  header .container{ display:flex; align-items:center; justify-content:space-between; }
+  .logo{ display:flex; flex-direction:column; }
+  .logo strong{ font-family:'Almarai'; font-weight:800; font-size:22px; color:var(--cream); letter-spacing:1px;}
+  .logo strong span{ color:var(--gold); }
+  .logo small{ font-size:10.5px; color:var(--muted); letter-spacing:2px; }
+  nav.links{ display:flex; align-items:center; gap:36px; }
+  nav.links a{ font-size:14.5px; font-weight:500; color:var(--cream); position:relative; padding:4px 0; }
+  nav.links a::after{ content:""; position:absolute; right:0; bottom:0; width:0; height:1px; background:var(--gold); transition:width .3s var(--ease); }
+  nav.links a:hover::after{ width:100%; }
+  .nav-cta{ display:flex; align-items:center; gap:16px; }
+  .burger{ display:none; flex-direction:column; gap:5px; cursor:pointer; z-index:110; background:none; border:none; }
+  .burger span{ width:24px; height:2px; background:var(--cream); display:block; }
+
+  /* ---------- hero ---------- */
+  .hero{
+    position:relative; min-height:100svh; display:flex; align-items:flex-end;
+    background-image:
+      linear-gradient(180deg, rgba(11,11,13,.35) 0%, rgba(11,11,13,.55) 55%, rgba(11,11,13,.97) 100%),
+      url('images/hero-x-glow.jpg');
+    background-size:cover; background-position:center 17%;
+    padding-bottom:90px;
+  }
+  .hero-inner{ max-width:760px; }
+  .hero h1{
+    font-size:clamp(38px, 6vw, 68px); color:var(--cream); margin-bottom:22px;
+  }
+  .hero h1 em{ font-style:normal; color:var(--gold-light); }
+  .hero p{ font-size:17px; color:var(--muted); max-width:520px; margin-bottom:34px; }
+  .hero-actions{ display:flex; flex-wrap:wrap; gap:16px; }
+  .scroll-cue{
+    position:absolute; bottom:26px; left:24px; display:flex; align-items:center; gap:10px;
+    font-size:12px; color:var(--muted); letter-spacing:1px;
+  }
+  .scroll-cue .line{ width:1px; height:36px; background:linear-gradient(var(--gold), transparent); }
+
+  /* ---------- stats strip ---------- */
+  .stats{
+    background:var(--bg-soft); border-top:1px solid var(--card-line); border-bottom:1px solid var(--card-line);
+    padding:34px 0;
+  }
+  .stats .container{ display:grid; grid-template-columns:repeat(4,1fr); gap:20px; text-align:center; }
+  .stats .num{ font-family:'Almarai'; font-weight:800; font-size:clamp(22px,3vw,34px); color:var(--gold-light); }
+  .stats .lbl{ font-size:13px; color:var(--muted); margin-top:6px; }
+  .stats .div{ width:1px; background:var(--card-line); }
+
+  /* ---------- section shell ---------- */
+  section{ padding:110px 0; position:relative; }
+  .section-head{ max-width:640px; margin-bottom:56px; }
+  .section-head h2{ font-size:clamp(28px,4vw,42px); color:var(--cream); }
+  .section-head p{ color:var(--muted); margin-top:16px; font-size:16px; max-width:520px; }
+
+  /* ---------- X divider signature ---------- */
+  .x-divider{
+    display:flex; align-items:center; justify-content:center;
+    padding:70px 0; gap:22px;
+  }
+  .x-divider svg{ width:64px; height:64px; }
+  .x-divider .rule{ flex:1; max-width:220px; height:1px; background:linear-gradient(90deg, transparent, var(--card-line)); }
+  .x-divider .rule.r2{ background:linear-gradient(270deg, transparent, var(--card-line)); }
+
+  /* ---------- about ---------- */
+  .about{ background:var(--bg); }
+  .about .grid{ display:grid; grid-template-columns:1.05fr .95fr; gap:70px; align-items:center; }
+  .about-media{ position:relative; }
+  .about-media img{ width:100%; height:460px; object-fit:cover; box-shadow:var(--shadow); }
+  .about-media::before{
+    content:""; position:absolute; inset:-16px auto auto -16px; width:120px; height:120px;
+    border-top:1px solid var(--gold); border-right:1px solid var(--gold);
+  }
+  .about-text .section-head{ margin-bottom:24px; }
+  .about-text p{ color:var(--muted); margin-bottom:16px; font-size:15.5px; }
+  .about-text p strong{ color:var(--cream); font-weight:700; }
+  .about-list{ margin-top:28px; display:flex; flex-direction:column; gap:14px; }
+  .about-list li{ display:flex; align-items:flex-start; gap:14px; font-size:15px; color:var(--cream); }
+  .about-list li .mark{ color:var(--gold); font-weight:700; flex-shrink:0; }
+
+  /* ---------- quality features ---------- */
+  .quality{ background:var(--bg-soft); border-top:1px solid var(--card-line); border-bottom:1px solid var(--card-line); }
+  .feat-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--card-line); border:1px solid var(--card-line); }
+  .feat{ background:var(--bg-soft); padding:38px 30px; transition:background .3s; }
+  .feat:hover{ background:#1c1c1f; }
+  .feat .fnum{ font-family:'Almarai'; font-weight:800; color:var(--gold); font-size:13px; letter-spacing:2px; margin-bottom:22px; display:block;}
+  .feat h3{ font-size:17px; color:var(--cream); margin-bottom:12px; }
+  .feat p{ font-size:14px; color:var(--muted); }
+
+  /* ---------- products ---------- */
+  .products{ background:var(--bg); }
+  .prod-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:28px; }
+  .prod-card{
+    background:var(--card); border:1px solid var(--card-line); overflow:hidden;
+    transition:transform .4s var(--ease), border-color .4s;
+  }
+  .prod-card:hover{ transform:translateY(-6px); border-color:var(--gold); }
+  .prod-media{ position:relative; height:230px; overflow:hidden; }
+  .prod-media img{ width:100%; height:100%; object-fit:cover; transition:transform .6s var(--ease); }
+  .prod-card:hover .prod-media img{ transform:scale(1.06); }
+  .prod-tag{
+    position:absolute; top:14px; right:14px; background:rgba(11,11,13,.82);
+    border:1px solid var(--gold); color:var(--gold-light); font-size:12px; font-weight:700;
+    padding:5px 12px; letter-spacing:.5px;
+  }
+  .prod-body{ padding:24px; }
+  .prod-body h3{ font-size:19px; color:var(--cream); margin-bottom:8px; }
+  .prod-body p{ font-size:13.5px; color:var(--muted); margin-bottom:18px; min-height:44px; }
+  .prod-foot{ display:flex; align-items:center; justify-content:space-between; border-top:1px solid var(--card-line); padding-top:16px; }
+  .price{ font-family:'Almarai'; font-weight:800; color:var(--gold-light); font-size:16px; }
+  .price small{ font-family:'Tajawal'; font-weight:400; color:var(--muted); font-size:11.5px; }
+  .prod-link{ font-size:13px; font-weight:700; color:var(--cream); border-bottom:1px solid var(--gold); padding-bottom:2px; }
+  .prod-link:hover{ color:var(--gold-light); }
+  .price-note{ text-align:center; color:var(--muted); font-size:13px; margin-top:36px; }
+
+  /* ---------- specs ---------- */
+  .specs{ background:var(--bg-soft); border-top:1px solid var(--card-line); border-bottom:1px solid var(--card-line); }
+  .specs-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--card-line); border:1px solid var(--card-line); }
+  .spec{ background:var(--bg-soft); padding:30px 26px; display:flex; flex-direction:column; gap:10px; transition:background .3s; }
+  .spec:hover{ background:#1c1c1f; }
+  .spec .stag{ font-family:'Tajawal'; font-weight:700; font-size:11.5px; color:var(--gold); letter-spacing:1px; }
+  .spec h3{ font-size:15.5px; color:var(--cream); font-family:'Tajawal'; font-weight:700; }
+  .spec p{ font-size:13px; color:var(--muted); }
+  @media (max-width:980px){ .specs-grid{ grid-template-columns:repeat(2,1fr); } }
+  @media (max-width:620px){ .specs-grid{ grid-template-columns:1fr; } }
+
+  /* ---------- CTA banner ---------- */
+  .cta-banner{
+    background:linear-gradient(135deg, #1a1305 0%, var(--bg-soft) 60%);
+    border-top:1px solid var(--card-line); border-bottom:1px solid var(--card-line);
+    text-align:center;
+  }
+  .cta-banner h2{ font-size:clamp(26px,4vw,40px); color:var(--cream); margin-bottom:18px; }
+  .cta-banner p{ color:var(--muted); max-width:520px; margin:0 auto 32px; }
+  .cta-actions{ display:flex; justify-content:center; gap:16px; flex-wrap:wrap; }
+
+  /* ---------- footer ---------- */
+  footer{ background:var(--bg); padding:70px 0 26px; }
+  .foot-grid{ display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr; gap:40px; padding-bottom:50px; border-bottom:1px solid var(--card-line); }
+  .foot-brand p{ color:var(--muted); font-size:14px; margin-top:16px; max-width:280px; }
+  .foot-col h4{ font-family:'Tajawal'; font-weight:700; font-size:14px; color:var(--cream); margin-bottom:18px; letter-spacing:.5px; }
+  .foot-col li{ margin-bottom:11px; }
+  .foot-col a, .foot-col span{ font-size:14px; color:var(--muted); }
+  .foot-col a:hover{ color:var(--gold-light); }
+  .foot-bottom{ display:flex; justify-content:space-between; align-items:center; padding-top:24px; flex-wrap:wrap; gap:12px; }
+  .foot-bottom span{ font-size:12.5px; color:var(--muted); }
+  .social{ display:flex; gap:14px; }
+  .social a{ width:34px; height:34px; border:1px solid var(--card-line); display:flex; align-items:center; justify-content:center; font-size:13px; color:var(--cream); transition:.3s; }
+  .social a:hover{ border-color:var(--gold); color:var(--gold-light); }
+
+  /* ---------- responsive ---------- */
+  @media (max-width:980px){
+    nav.links{ display:none; }
+    .burger{ display:flex; }
+    .about .grid{ grid-template-columns:1fr; gap:44px; }
+    .about-media img{ height:340px; }
+    .feat-grid{ grid-template-columns:repeat(2,1fr); }
+    .prod-grid{ grid-template-columns:repeat(2,1fr); }
+    .stats .container{ grid-template-columns:repeat(2,1fr); row-gap:26px; }
+    .foot-grid{ grid-template-columns:1fr 1fr; }
+  }
+  @media (max-width:620px){
+    .container{ padding:0 18px; }
+    section{ padding:76px 0; }
+    .prod-grid{ grid-template-columns:1fr; }
+    .feat-grid{ grid-template-columns:1fr; }
+    .hero{ padding-bottom:60px; }
+    .nav-cta .btn{ padding:11px 18px; font-size:13px; }
+    .foot-grid{ grid-template-columns:1fr; gap:30px; }
+    .foot-bottom{ flex-direction:column; align-items:flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<header id="siteHeader">
+  <div class="container">
+    <div class="logo">
+      <strong>F<span>ox</span></strong>
+      <small>مصنع طاولات البلياردو</small>
+    </div>
+    <nav class="links">
+      <a href="#about">من نحن</a>
+      <a href="#quality">الجودة والخامات</a>
+      <a href="#specs">المواصفات</a>
+      <a href="#products">المنتجات</a>
+      <a href="#contact">تواصل معنا</a>
+    </nav>
+    <div class="nav-cta">
+      <a href="https://wa.me/201069102654?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%B9%D8%A7%D9%8A%D8%B2%20%D8%A3%D8%B7%D9%84%D8%A8%20%D8%B7%D8%A7%D9%88%D9%84%D8%A9%20%D8%A8%D9%84%D9%8A%D8%A7%D8%B1%D8%AF%D9%88%20%D9%85%D9%86%20%D9%85%D8%B5%D9%86%D8%B9%20%D8%A5%D8%AA%D9%82%D8%A7%D9%86" class="btn btn-gold" target="_blank" rel="noopener">اطلب على واتساب</a>
+      <button class="burger" id="burger" aria-label="القائمة"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container hero-inner">
+    <h1 class="reveal">نصنع طاولة <em>تُورَث</em>، لا تُستبدل</h1>
+    <p class="reveal">مصنع فوكس لتصنيع طاولات البلياردو — من أول لوح خشب إلى آخر لمسة تشطيب، كل طاولة تخرج من مصنعنا نفّذها فريقنا بأيدينا بأعلي جوده، تحت سقف واحد، بلا وسطاء.</p>
+    <div class="hero-actions reveal">
+      <a href="#products" class="btn btn-gold">تصفح التشكيلة</a>
+      <a href="#contact" class="btn btn-ghost">اطلب تصميمك الخاص</a>
+    </div>
+  </div>
+  <div class="scroll-cue"><span class="line"></span> مرر لأسفل</div>
+</section>
+
+<div class="stats">
+  <div class="container">
+    <div><div class="num">10+</div><div class="lbl">سنة خبرة في التصنيع</div></div>
+    <div><div class="num">+450</div><div class="lbl">طاولة تم تسليمها</div></div>
+    <div><div class="num">5</div><div class="lbl">سنوات ضمان حقيقي</div></div>
+    <div><div class="num">27</div><div class="lbl">محافظة نوصّل ونركّب بها</div></div>
+  </div>
+</div>
+
+<section class="about" id="about">
+  <div class="container grid">
+    <div class="about-media reveal">
+      <img src="images/about-lounge.jpg" alt="صالة بلياردو بطاولة من تصنيع فوكس">
+    </div>
+    <div class="about-text reveal">
+      <div class="section-head">
+        <div class="eyebrow">من نحن</div>
+        <h2>المصنع الأول، لا الوسيط</h2>
+      </div>
+      <p>كل طاولة تحمل اسم <strong>فوكس</strong> صُنعت داخل ورشتنا، من قص الخشب ولحام القوائم إلى شد القماش وتجميع الكفوف — لا نستورد طاولات جاهزة ولا نعيد بيعها. هذا يعني أننا نتحكم في كل تفصيلة، ونقدر نصمم مقاسك ولونك زي ما تحب.</p>
+      <p>فريقنا من النجارين والحدادين اللي كبروا مع المصنع، وكل طاولة بتتوقّع عليها معاينة جودة قبل ما تطلع من الباب.</p>
+      <ul class="about-list">
+        <li><span class="mark">١</span> تصنيع كامل داخل مصر، بأيدٍ مصرية</li>
+        <li><span class="mark">٢</span> تصميم مقاسات وألوان حسب الطلب</li>
+        <li><span class="mark">٣</span> متابعة ما بعد البيع وصيانة دورية</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<div class="x-divider reveal">
+  <div class="rule"></div>
+  <svg viewBox="0 0 100 100" fill="none">
+    <line x1="15" y1="15" x2="85" y2="85" stroke="#c9a24b" stroke-width="3"/>
+    <line x1="85" y1="15" x2="15" y2="85" stroke="#c9a24b" stroke-width="3"/>
+  </svg>
+  <div class="rule r2"></div>
+</div>
+
+<section class="quality" id="quality">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow">الجودة والخامات</div>
+      <h2>الجودة الحقيقية في اللي ما بيتشافش.</h2>
+      
+      <p>الفرق بين طاولة بتعيش خمس سنين وطاولة بتعيش عشرين، بيتحدد من الخامة اللي جوّاها مش بس اللون اللي على وشّها.</p>
+    </div>
+  </div>
+  <div class="feat-grid reveal">
+    <div class="feat">
+      <span class="fnum">الخشب</span>
+      <h3>خامات مختارة بعناية</h3>
+      <p>ألواح خشب عالية الكثافة مقاومة للرطوبة، مع قشرة طبيعية أو تشطيب لامع حسب الموديل.</p>
+    </div>
+    <div class="feat">
+      <span class="fnum">القماش</span>
+      <h3>قماش بلياردو أصلي</h3>
+      <p>أقمشة معتمدة بمقاسات دولية، سطح ناعم يحافظ على استقامة الكرة لسنوات من اللعب.</p>
+    </div>
+    <div class="feat">
+      <span class="fnum">الهيكل</span>
+      <h3>قوائم صلبة تتحمل</h3>
+      <p>قواعد من الحديد والخشب المصمت، مصممة لتحمل الاستخدام اليومي دون اهتزاز أو ترهل.</p>
+    </div>
+    <div class="feat">
+      <span class="fnum">التشطيب</span>
+      <h3>لمسة يد، لا مصنع آلي</h3>
+      <p>كل طاولة تمر بمراحل دهان وصنفرة وتجميع يدوي، ومعاينة نهائية قبل التسليم والتركيب.</p>
+    </div>
+  </div>
+</section>
+
+<section class="specs" id="specs">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow">المواصفات القياسية</div>
+      <h2>كل طاولة بتتسلم بنفس المعايير</h2>
+      <p>مهما اخترت الموديل أو اللون، الأجزاء الأساسية اللي بتحدد جودة اللعب ثابتة في كل طاولة بتخرج من المصنع.</p>
+    </div>
+  </div>
+  <div class="specs-grid reveal">
+    <div class="spec">
+      <span class="stag">البانض</span>
+      <h3>بانض إمبريال تايواني</h3>
+      <p>مطاط  أصلي الصنع، ارتداد ثابت للكرة وعمر افتراضي طويل بدون ترهل.</p>
+    </div>
+    <div class="spec">
+      <span class="stag">الكور</span>
+      <h3>طقم كور مستورد</h3>
+      <p>وزن ومقاس موحّد حسب المعايير الدولية، وثبات في اللون مع الاستخدام.</p>
+    </div>
+    <div class="spec">
+      <span class="stag">أوستكات</span>
+      <h3>أوستكات آيزو ماستر (قطعتين)</h3>
+      <p> مصنعة بخامات قوية لعمر افتراضي أطول. أوستكات بجودة احترافية... لارتداد دقيق وثابت.</p>
+    </div>
+    <div class="spec">
+      <span class="stag">التجميع</span>
+      <h3>مثلث عاج</h3>
+      <p>لتجميع الكور بدقة قبل بداية كل شوط.</p>
+    </div>
+    <div class="spec">
+      <span class="stag">القماش</span>
+      <h3>قماش مستورد</h3>
+      <p>خامة ناعمة عالية الكثافة تحافظ على سرعة وثبات الكرة لسنوات.</p>
+    </div>
+    <div class="spec">
+      <span class="stag">الجيوب</span>
+      <h3>بوكيت سلة مستوردة</h3>
+      <p>سلال جيب متينة بتثبيت محكم في زوايا وأطراف الطاولة.</p>
+    </div>
+    <div class="spec">
+      <span class="stag">الإكسسوارات</span>
+      <h3>استاند أوستكات</h3>
+      <p>لتخزين وحماية القطع والإكسسوارات الملحقة بالطاولة.</p>
+    </div>
+    <div class="spec">
+      <span class="stag">الإضاءة</span>
+      <h3>وحدة إضاءة بلمبتين</h3>
+      <p>إضاءة علوية موجّهة تغطي سطح اللعب بالكامل بشكل متساوٍ.</p>
+    </div>
+  </div>
+</section>
+
+<section class="products" id="products">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow">المنتجات</div>
+      <h2>تشكيلة من التصنيع المحلي</h2>
+      <p>موديلات جاهزة للطلب، وكل موديل قابل للتعديل في المقاس واللون وقماش الطاولة.</p>
+    </div>
+
+    <div class="prod-grid">
+
+
+      <div class="prod-card reveal">
+        <div class="prod-media">
+          <img src="images/product-white-classic.png" alt="طاولة بلياردو بيضاء بقاعدة X">
+          <span class="prod-tag">قاعدة X</span>
+        </div>
+        <div class="prod-body">
+          <h3>الكلاسيكية البيضاء</h3>
+          <p>تشطيب أبيض نقي وقاعدة X عصرية، مثالية للتراسات والحدائق المغطاة.</p>
+          <div class="prod-foot">
+            <div class="price">22,000 <small>جنيه </small></div>
+            <a class="prod-link" target="_blank" rel="noopener" href="https://wa.me/201069102654?text=عايز أطلب طاولة الكلاسيكية البيضاء  ">اطلب على واتساب</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="prod-card reveal">
+        <div class="prod-media">
+          <img src="images/product-red-arch.jpg" alt="طاولة بلياردو بقماش أحمر وقاعدة قوسية">
+          <span class="prod-tag">قاعدة قوسية</span>
+        </div>
+        <div class="prod-body">
+          <h3>القوس الأحمر</h3>
+          <p>قاعدة منحنية منحوتة يدويًا، مع قماش أحمر ملكي يعطي حضورًا قويًا للصالة.</p>
+          <div class="prod-foot">
+            <div class="price">23,500 <small>جنيه </small></div>
+                        <a class="prod-link" target="_blank" rel="noopener" href="https://wa.me/201069102654?text=عايز أطلب طاولة  القوس الأحمر
+  ">اطلب على واتساب</a>
+
+          </div>
+        </div>
+      </div>
+
+      
+      <div class="prod-card reveal">
+        <div class="prod-media">
+          <img src="images/ChatGPT Image Jul 13, 2026, 04_46_24 PM.png" alt="طاولة بلياردو غرافيت بإضاءة LED">
+          <span class="prod-tag">إضاءة LED</span>
+        </div>
+        <div class="prod-body">
+          <h3> فوكس النخبة (LED Profile)
+</h3>
+          <p>قماش رمادي غرافيت داكن، مع إضاءة LED مدمجة أسفل القاعدة تضيء المكان ليلًا.</p>
+          <div class="prod-foot">
+            <div class="price">25,000 <small>جنيه </small></div>
+            <a class="prod-link" target="_blank" rel="noopener" href="https://wa.me/201069102654?text=عايز أطلب طاولة  فوكس النخبة (LED Profile)
+  ">اطلب على واتساب</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="prod-card reveal">
+        <div class="prod-media">
+          <img src="images/m.png" alt="طاولة بلياردو سوداء بإضاءة ذهبية">
+          <span class="prod-tag">الأكثر طلبًا</span>
+        </div>
+        <div class="prod-body">
+          <h3>فوكس النخبة (LED Profile) </h3>
+          <p>هيكل أسود فاخر مع خط إضاءة ذهبي أسفل القاعدة ينعكس على الأرضية.</p>
+          <div class="prod-foot">
+            <div class="price">25,000 <small>جنيه </small></div>
+        <a class="prod-link" target="_blank" rel="noopener" href="https://wa.me/201069102654?text=عايز أطلب طاولة  فوكس النخبة (LED Profile)
+  ">اطلب على واتساب</a>          </div>
+        </div>
+      </div>
+
+      <div class="prod-card reveal">
+        <div class="prod-media">
+          <img src="images/product-teal-lion.jpg" alt="طاولة بلياردو بقماش أخضر مزرق">
+          <span class="prod-tag">لون مخصص</span>
+        </div>
+        <div class="prod-body">
+          <h3> فوكس النخبة (LED Profile)
+</h3>
+          <p>قماش أخضر مزرق نادر مع قاعدة X مضيئة، اختيار مميز للصالات الداكنة.</p>
+          <div class="prod-foot">
+            <div class="price">25,000 <small>جنيه </small></div>
+        <a class="prod-link" target="_blank" rel="noopener" href="https://wa.me/201069102654?text=عايز أطلب طاولة  فوكس النخبة (LED Profile)
+  ">اطلب على واتساب</a>          </div>
+        </div>
+      </div>
+
+      <div class="prod-card reveal">
+        <div class="prod-media">
+          <img src="images/product-walnut.jpg" alt="طاولة بلياردو خشب جوز داكن">
+          <span class="prod-tag">تشطيب لامع</span>
+        </div>
+        <div class="prod-body">
+          <h3>اكس اسود</h3>
+          <p>خشب جوز داكن بقاعدة X  وتشطيب لامع، للصالات ذات الطابع الكلاسيكي.</p>
+          <div class="prod-foot">
+            <div class="price">25,000 <small>جنيه </small></div>
+            <a class="prod-link" target="_blank" rel="noopener" href="https://wa.me/201069102654?text=عايز أطلب طاولة اكس اسود ">اطلب على واتساب</a>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="prod-card reveal">
+        <div class="prod-media">
+          <img src="images/about-lounge.jpg" alt="طاولة بلياردو خشب جوز داكن">
+          <span class="prod-tag">تشطيب لامع</span>
+        </div>
+        <div class="prod-body">
+          <h3>اكس اسود (LED Profile)</h3>
+          <p>خشب جوز داكن بقاعدة X تقليدية وتشطيب لامع، للصالات ذات الطابع الكلاسيكي.</p>
+          <div class="prod-foot">
+            <div class="price">25,000 <small>جنيه </small></div>
+            <a class="prod-link" target="_blank" rel="noopener" href="https://wa.me/201069102654?text=عايز أطلب طاولة اكس اسود (LED Profile)">اطلب على واتساب</a>
+          </div>
+        </div>
+      </div>
+
+
+
+
+      <div class="prod-card reveal">
+        <div class="prod-media">
+          <img src="images/reeeeeeeeeeeeegl.jpeg" alt="طاولة بلياردو خشب جوز داكن">
+          <span class="prod-tag">تشطيب لامع</span>
+        </div>
+        <div class="prod-body">
+          <h3>طربيزه شعبي </h3>
+          <p>طاولة بلياردو عصرية بتصميم فاخر، قماش أزرق احترافي، هيكل أسود متين وتشطيب راقٍ يمنحها مظهراً أنيقاً يناسب أرقى غرف الألعاب.</p>
+          <div class="prod-foot">
+            <div class="price">13,000 <small>جنيه </small></div>
+            <a class="prod-link" target="_blank" rel="noopener" href="https://wa.me/201069102654?text=عايز أطلب طاولة شعبي">اطلب على واتساب</a>
+          </div>
+        </div>
+      </div>
+
+
+
+
+
+
+
+
+      <div class="prod-card reveal">
+        <div class="prod-media">
+          <img src="images/elssss.jpeg" alt="طاولة بلياردو خشب جوز داكن">
+          <span class="prod-tag">تشطيب لامع</span>
+        </div>
+        <div class="prod-body">
+          <h3> إليت بلاك (Elite Black) </h3>
+          <p>طاولة بلياردو عصرية بتصميم فاخر، قماش أزرق احترافي، هيكل أسود متين وتشطيب راقٍ يمنحها مظهراً أنيقاً يناسب أرقى غرف الألعاب.</p>
+          <div class="prod-foot">
+            <div class="price">22,000 <small>جنيه </small></div>
+            <a href="https://wa.me/201069102654?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%B9%D8%A7%D9%8A%D8%B2%20%D8%A3%D8%B7%D9%84%D8%A8%20%D8%B7%D8%A7%D9%88%D9%84%D8%A9%20%D8%AA%D9%88%D8%B3%D9%83%D8%A7%D9%86%D8%A7%20%D8%A7%D9%84%D8%AC%D9%88%D8%B2" class="prod-link" target="_blank" rel="noopener">اطلب على واتساب</a>
+          </div>
+        </div>
+      </div>
+
+
+
+
+
+
+
+      <div class="prod-card reveal">
+        <div class="prod-media">
+          <img src="images/wwwww.jpeg" alt="طاولة بلياردو خشب جوز داكن">
+          <span class="prod-tag">تشطيب لامع</span>
+        </div>
+        <div class="prod-body">
+          <h3> وايت كلاسيك (White Classic) </h3>
+     
+          <p>طاولة وايت كلاسيك بتصميم بسيط وأنيق يناسب المساحات العصرية والكلاسيكية</p>
+          <div class="prod-foot">
+            <div class="price">22,000 <small>جنيه </small></div>
+            <a class="prod-link" target="_blank" rel="noopener" href="https://wa.me/201069102654?text=عايز أطلب طاولة وايت كلاسيك (White Classic)">اطلب على واتساب</a>
+          </div>
+        </div>
+      </div>
+
+
+
+      <div class="prod-card reveal">
+        <div class="prod-media">
+          <img src="images/hamre.jpeg" alt="طاولة بلياردو خشب جوز داكن">
+          <span class="prod-tag">تشطيب لامع</span>
+        </div>
+        <div class="prod-body">
+          <h3> طربيزه شعبي تجميع </h3>
+          <p>تجمع بين الفخامة والأداء، بهيكل أسود أنيق وقماش خمري فاخر يمنحها مظهرًا مميزًا. مصنوعة بخامات عالية الجودة وتشطيب احترافي</p>
+          <div class="prod-foot">
+            <div class="price">17,000 <small>جنيه </small></div>
+            <a class="prod-link" target="_blank" rel="noopener" href="https://wa.me/201069102654?text=عايز أطلب طاولة شعبي تجميع">اطلب على واتساب</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <p class="price-note reveal">الأسعار ابتداءً من الموضح أعلاه، وتختلف حسب المقاس ولون القماش ونوع الخشب المطلوب.</p>
+  </div>
+</section>
+  
+
+
+
+
+
+<section class="cta-banner" id="contact">
+  <div class="container reveal">
+    <div class="eyebrow" style="justify-content:center">تواصل معنا</div>
+    <h2>عايز طاولة بمقاسك ولونك؟</h2>
+    <p>ابعتلنا مقاس المكان ولون الديكور، وفريقنا هيصمملك الطاولة المناسبة ويوصّلها ويركّبها في بيتك.</p>
+    <div class="cta-actions">
+      <!-- <a href="tel:+201069102654" class="btn btn-gold">اتصل بنا الآن</a> -->
+      <a href="https://wa.me/201069102654?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%B9%D8%A7%D9%8A%D8%B2%20%D8%A3%D8%B7%D9%84%D8%A8%20%D8%B7%D8%A7%D9%88%D9%84%D8%A9%20%D8%A8%D9%84%D9%8A%D8%A7%D8%B1%D8%AF%D9%88%20%D9%85%D9%86%20%D9%85%D8%B5%D9%86%D8%B9%20%D8%A5%D8%AA%D9%82%D8%A7%D9%86" class="btn btn-ghost">راسلنا على واتساب</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <div class="logo"><strong>ف<span>وكس</span></strong></div>
+        <p>مصنع مصري لتصنيع طاولات البلياردو، من التصميم للتركيب تحت سقف واحد.</p>
+      </div>
+      <div class="foot-col">
+        <h4>روابط سريعة</h4>
+        <ul>
+          <li><a href="#about">من نحن</a></li>
+          <li><a href="#quality">الجودة والخامات</a></li>
+          <li><a href="#products">المنتجات</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>تواصل</h4>
+        <ul>
+          <li><a href="tel:+201069102654">01069102654</a></li>
+          <li><a href="mailto:info@itqan-billiards.com">malekmohamed1832000@gmail.com</a></li>
+          <li><span>القاهرة، مصر</span></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>تابعنا</h4>
+        <div class="social">
+          <a target="_blank" href="https://www.facebook.com/profile.php?id=61590511619864&rdid=Hu1pxYG40tlAFSrm&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F19Qv1S9yzL%2F#" aria-label="فيسبوك">F</a>
+          <a href="https://wa.me/201069102654" target="_blank" aria-label="واتساب">wa</a>
+        </div>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 مصنع فوكس لتصنيع طاولات البلياردو. جميع الحقوق محفوظة.</span>
+      <span>تصميم وتصنيع محلي 100%</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const header = document.getElementById('siteHeader');
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 40);
+  });
+
+  const burger = document.getElementById('burger');
+  const links = document.querySelector('nav.links');
+  burger.addEventListener('click', () => {
+    const open = links.style.display === 'flex';
+    links.style.cssText = open ? '' : 'display:flex; position:fixed; inset:0; flex-direction:column; justify-content:center; align-items:center; background:rgba(11,11,13,.98); gap:34px; font-size:20px;';
+  });
+  links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { links.style.cssText=''; }));
+
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { threshold: 0.15 });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  } else {
+    document.querySelectorAll('.reveal').forEach(el => el.classList.add('in'));
+  }
+</script>
+
+</body>
+</html>
